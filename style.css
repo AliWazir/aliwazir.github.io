@@ -1,24 +1,59 @@
+/* Import font */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+:root {
+  /* Light Theme Colors */
+  --bg-gradient: linear-gradient(135deg, #16a085, #27ae60);
+  --card-bg: #f8fdf9;
+  --panel-bg: #ecfdf2;
+  --text-color: #2c3e50;
+  --accent: #16a085;
+  --shadow: rgba(0, 0, 0, 0.15);
+}
+
+/* Dark Theme Variables */
+body.dark-mode {
+  --bg-gradient: linear-gradient(135deg, #0a2a24, #0f5132);
+  --card-bg: #1c1c1c;
+  --panel-bg: #262626;
+  --text-color: #e5e5e5;
+  --accent: #2ecc71;
+  --shadow: rgba(0, 0, 0, 0.5);
+}
+
+/* ---------- BODY ---------- */
 body {
   margin: 0;
   font-family: 'Poppins', sans-serif;
-  background: linear-gradient(135deg, #1abc9c, #2ecc71);
-  color: #2c3e50;
+  background: var(--bg-gradient);
+  color: var(--text-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  transition: background 0.6s ease, color 0.4s ease;
 }
 
+/* ---------- CONTAINER ---------- */
 .container {
   display: flex;
   flex-wrap: wrap;
-  min-height: 100vh;
+  max-width: 1100px;
+  background: var(--card-bg);
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 8px 20px var(--shadow);
+  transition: background 0.6s ease, box-shadow 0.4s ease;
 }
 
-/* Left profile panel */
-.profile {
-  background: #ecf0f1;
-  padding: 2rem;
-  width: 30%;
+/* ---------- LEFT PANEL ---------- */
+.profile-section {
+  background: var(--panel-bg);
+  flex: 0 0 35%;
   min-width: 280px;
   text-align: center;
-  box-shadow: 2px 0 8px rgba(0,0,0,0.1);
+  padding: 2.5rem 2rem;
+  position: relative;
 }
 
 .profile-pic {
@@ -26,68 +61,149 @@ body {
   height: 140px;
   border-radius: 50%;
   object-fit: cover;
-  margin-bottom: 1rem;
+  margin-bottom: 1.2rem;
+  box-shadow: 0 4px 10px var(--shadow);
 }
 
-.profile h2 {
-  margin-bottom: 0.3rem;
+.profile-section h2 {
+  margin: 0.3rem 0;
+  font-weight: 700;
+  color: var(--text-color);
 }
 
-.profile h4 {
-  color: #16a085;
+.profile-section h4 {
+  color: var(--accent);
+  margin-top: 0.5rem;
+  font-weight: 600;
+}
+
+.profile-section h5,
+.profile-section h6 {
+  margin: 0.3rem 0;
+  color: var(--text-color);
+  font-weight: 400;
+  font-size: 0.95rem;
+}
+
+.social-links {
+  margin: 1.5rem 0;
+}
+
+.social-links a {
+  color: var(--text-color);
+  font-size: 1.3rem;
+  margin: 0 8px;
+  transition: all 0.3s ease;
+}
+
+.social-links a:hover {
+  color: var(--accent);
+  transform: scale(1.1);
+}
+
+.contact {
+  font-size: 0.9rem;
+  color: var(--text-color);
+  margin-top: 1rem;
+}
+
+/* ---------- RIGHT PANEL ---------- */
+.content-section {
+  flex: 1;
+  padding: 3rem;
+  background: var(--card-bg);
+  transition: background 0.6s ease;
+}
+
+.content-section h3 {
+  color: var(--accent);
+  font-weight: 700;
   margin-top: 0;
 }
 
-.icons a {
-  color: #2c3e50;
-  font-size: 1.3rem;
-  margin: 0 8px;
-  text-decoration: none;
+.content-section p {
+  font-size: 1rem;
+  line-height: 1.7;
 }
 
-.email {
-  margin-top: 1.5rem;
-  font-size: 0.9rem;
-  color: #555;
-}
-
-/* Right content area */
-.content {
-  flex: 1;
-  background: #fdfdfd;
-  padding: 3rem;
-}
-
-h2, h3 {
-  color: #16a085;
-}
-
-.columns {
+.research-areas {
   display: flex;
   justify-content: space-between;
+  flex-wrap: wrap;
+  margin-top: 2rem;
   gap: 2rem;
 }
 
-.columns div {
-  width: 45%;
+.column {
+  flex: 1 1 45%;
+  background: var(--panel-bg);
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 3px 10px var(--shadow);
+  transition: all 0.3s ease;
 }
 
-ul {
-  list-style-type: circle;
+.column:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 14px var(--shadow);
+}
+
+.column h4 {
+  margin-bottom: 1rem;
+  font-weight: 600;
+  color: var(--text-color);
+}
+
+.column ul {
+  list-style-type: disc;
   padding-left: 1.2rem;
+  line-height: 1.8;
+  color: var(--text-color);
 }
 
-@media (max-width: 800px) {
+/* ---------- THEME TOGGLE BUTTON ---------- */
+.theme-toggle {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  box-shadow: 0 4px 10px var(--shadow);
+  transition: all 0.3s ease;
+}
+
+.theme-toggle:hover {
+  background: #1abc9c;
+  transform: scale(1.05);
+}
+
+/* ---------- RESPONSIVE ---------- */
+@media (max-width: 900px) {
   .container {
     flex-direction: column;
+    max-width: 95%;
   }
-  .profile {
+
+  .profile-section {
     width: 100%;
+    padding: 2rem;
   }
-  .columns {
+
+  .content-section {
+    padding: 2rem;
+  }
+
+  .research-areas {
     flex-direction: column;
   }
-  .columns div {
+
+  .column {
     width: 100%;
   }
 }
