@@ -1,4 +1,4 @@
-/* Import font */
+/* ---------- Import Font ---------- */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
 
 :root {
@@ -11,7 +11,7 @@
   --shadow: rgba(0, 0, 0, 0.15);
 }
 
-/* Dark Theme Variables */
+/* ---------- Dark Theme Variables ---------- */
 body.dark-mode {
   --bg-gradient: linear-gradient(135deg, #0a2a24, #0f5132);
   --card-bg: #1c1c1c;
@@ -56,13 +56,15 @@ body {
   position: relative;
 }
 
+/* ✅ Rectangular image */
 .profile-pic {
-  width: 140px;
-  height: 140px;
-  border-radius: 50%;
+  width: 90%;
+  aspect-ratio: 4 / 3;
   object-fit: cover;
+  border-radius: 12px;
   margin-bottom: 1.2rem;
   box-shadow: 0 4px 10px var(--shadow);
+  border: 3px solid var(--accent);
 }
 
 .profile-section h2 {
@@ -85,20 +87,21 @@ body {
   font-size: 0.95rem;
 }
 
+/* ---------- Social Links ---------- */
 .social-links {
   margin: 1.5rem 0;
 }
 
 .social-links a {
   color: var(--text-color);
-  font-size: 1.3rem;
-  margin: 0 8px;
+  font-size: 1.4rem;
+  margin: 0 10px;
   transition: all 0.3s ease;
 }
 
 .social-links a:hover {
   color: var(--accent);
-  transform: scale(1.1);
+  transform: scale(1.15);
 }
 
 .contact {
